@@ -5,7 +5,8 @@ public class KarelDefendsDemocracy extends SuperKarel {
 
 	public void run() {
 		move();
-	move();	
+	move();
+	move();
 	}
 	
 		

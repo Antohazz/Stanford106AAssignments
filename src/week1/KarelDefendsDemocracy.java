@@ -13,7 +13,6 @@ public class KarelDefendsDemocracy extends SuperKarel {
 		turnLeft();
 		pickEmAll();
 		pickEmAll();
-		move();
 		turnRight();
 	}
 	
@@ -25,6 +24,7 @@ public class KarelDefendsDemocracy extends SuperKarel {
 			pickBeeper();
 		}
 		turnAround();
+		move();
 	}
 	
 	private void cleanBallot() {

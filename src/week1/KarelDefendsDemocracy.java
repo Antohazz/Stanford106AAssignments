@@ -11,12 +11,12 @@ public class KarelDefendsDemocracy extends SuperKarel {
 	
 	private void doCleaning() {
 		turnLeft();
-		pickEmAll();
-		pickEmAll();
+		pickBallots();
+		pickBallots();
 		turnRight();
 	}
 	
-	private void pickEmAll() {
+	private void pickBallots() {
 		while (frontIsClear()) {
 			move();
 		}

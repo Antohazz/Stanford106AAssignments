@@ -1,0 +1,8 @@
+Dimension: (9, 9)
+Wall: (9, 1) west
+Wall: (9, 2) west
+Wall: (9, 4) west
+Karel: (1, 1) east
+
+BeeperBag: INFINITE
+Speed: 0.50

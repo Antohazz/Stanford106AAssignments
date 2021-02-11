@@ -9,6 +9,21 @@ public class KarelDefendsDemocracy extends SuperKarel {
 		
 	}
 	
+	private void cleanBallot() {
+		while (frontIsClear()) {
+			move();
+			if (noBeepersPresent()) {
+				doCleaning();
+				move();
+			}else{
+				move();
+				cleanBallot();
+			}
+			
+		}
+
+	}
+	
 	private void doCleaning() {
 		turnLeft();
 		pickBallots();
@@ -27,19 +42,6 @@ public class KarelDefendsDemocracy extends SuperKarel {
 		move();
 	}
 	
-	private void cleanBallot() {
-		while (frontIsClear()) {
-			move();
-			if (noBeepersPresent()) {
-				doCleaning();
-				move();
-			}else{
-				move();
-				cleanBallot();
-			}
-			
-		}
-
-	}
+	
 		
 }

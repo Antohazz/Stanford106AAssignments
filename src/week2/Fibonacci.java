@@ -5,21 +5,19 @@ import acm.program.*;
 public class Fibonacci extends ConsoleProgram {
 
 	private static final int MAX_VALUE = 10000;
-	
+
 	public void run() {
 
 		println("Lady and Gentlemens,");
 		println("The Fibonacci Sequence!");
 		
-		int fib = 1;
-		println("0");
-		println("1");
-		do {println(fib);
-			fib+=fib;
-			if (fib > MAX_VALUE) {
-					break;
-			}
+		int fib0 = 0;
+		
+		for (int fib1 = 1; fib1 < MAX_VALUE; fib1 += fib0 ) {
+			println(fib0);
+			println(fib1);
+			fib0 += fib1; 
 		}
-		while (fib < MAX_VALUE);
+		println(fib0);
 	}
 }

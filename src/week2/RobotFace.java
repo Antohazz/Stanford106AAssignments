@@ -1,5 +1,6 @@
 package week2;
 
+
 import acm.program.GraphicsProgram;
 
 import java.awt.Color;
@@ -48,17 +49,17 @@ public class RobotFace extends GraphicsProgram {
 		
 	}
 	private void drawEye1() {
-		posX += EYE_RADIUS;
+		posX = xMid - 3*EYE_RADIUS;
 		posY = yMid - HEAD_HEIGHT / 2 + 3*EYE_RADIUS;
-		GOval REye1 = new GOval (posX, posY, EYE_RADIUS, EYE_RADIUS);
+		GOval REye1 = new GOval (posX, posY, 2*EYE_RADIUS, 2*EYE_RADIUS);
 		REye1.setColor(Color.yellow);
 		REye1.setFilled(true);
 		add(REye1);
 	}
 	private void drawEye2() {
-		posX = HEAD_WIDTH / 2 + xMid - 3.5*EYE_RADIUS;
+		posX = xMid + EYE_RADIUS;
 		posY = yMid - HEAD_HEIGHT / 2 + 3*EYE_RADIUS;
-		GOval REye2 = new GOval (posX, posY, EYE_RADIUS, EYE_RADIUS);
+		GOval REye2 = new GOval (posX, posY, 2*EYE_RADIUS, 2*EYE_RADIUS);
 		REye2.setColor(Color.yellow);
 		REye2.setFilled(true);
 		add(REye2);

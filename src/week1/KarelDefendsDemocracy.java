@@ -6,7 +6,6 @@ public class KarelDefendsDemocracy extends SuperKarel {
 	public void run() {
 
 		cleanBallot();
-		
 	}
 	
 	private void cleanBallot() {

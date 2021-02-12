@@ -53,13 +53,13 @@ public class RobotFace extends GraphicsProgram {
 
 	}
 	private void drawEyes (double x, double y) {
-		int X = midX - HEAD_WIDTH / 4;
-		int Y = midY - HEAD_HEIGHT / 4;
+		int X = midX - HEAD_WIDTH / 4 - EYE_RADIUS;
+		int Y = midY - HEAD_HEIGHT / 4 - EYE_RADIUS;
 		GOval REye = new GOval (X, Y, 2*EYE_RADIUS, 2*EYE_RADIUS);
 		REye.setColor(Color.yellow);
 		REye.setFilled(true);
 		add(REye);
-		X = midX + HEAD_WIDTH / 4 - 2*EYE_RADIUS;
+		X = midX + HEAD_WIDTH / 4 - EYE_RADIUS;
 		GOval REye2 = new GOval (X, Y, 2*EYE_RADIUS, 2*EYE_RADIUS);
 		REye2.setColor(Color.yellow);
 		REye2.setFilled(true);

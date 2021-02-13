@@ -2,6 +2,8 @@
 package week2;
 
 
+import java.awt.Color;
+
 import acm.graphics.GOval;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
@@ -16,7 +18,10 @@ public class RandomCircles extends GraphicsProgram {
 				GOval myCircle = new GOval(x,y,radius*2,radius*2);
 				myCircle.setFilled(true);
 				myCircle.setColor(rgen.nextColor());
-// white circle not seen
+				// color white circle with new random
+				while (myCircle.getColor() == Color.WHITE) {
+					myCircle.setColor(rgen.nextColor());
+				}
 				add(myCircle);
 			}
 	}

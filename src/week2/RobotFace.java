@@ -28,7 +28,6 @@ public class RobotFace extends GraphicsProgram {
 	}
 
 	private void drawRobot(double x, double y) {
-		
 		drawHead(x,y);
 		drawMouth(x,y);
 		drawEyes(x,y);

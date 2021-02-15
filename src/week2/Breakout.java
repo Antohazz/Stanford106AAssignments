@@ -74,6 +74,7 @@ public class Breakout extends GraphicsProgram {
 		
 	}
 	
+	
 	private void createWallOfBricks() {
 		int y = 10 * BRICK_HEIGHT;
 		int r = 255;

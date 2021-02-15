@@ -60,6 +60,9 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 
+	
+	private static final int DELAY = 5;
+	
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
@@ -71,6 +74,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void setup() {
+		numOfBricks = NBRICK_ROWS * NBRICKS_PER_ROW;
 		createWallOfBricks();
 		createPaddle();
 		addMouseListeners();
@@ -89,7 +93,7 @@ public class Breakout extends GraphicsProgram {
 			y = y + BRICK_HEIGHT + BRICK_SEP;
 			if (g <= 200) {
 				g+=50;
-			}else {
+			} else {
 				if (b <= 200) {
 			}
 				r = 0;
@@ -133,14 +137,20 @@ public class Breakout extends GraphicsProgram {
 	
 	private void play() {
 		createBall();
+		vy = 3.0;
+		vx = rgen.nextDouble(1.0, 3.0);
+		if (rgen.nextBoolean(0.5)){
+			vx = -vx;
+		}
 		while(!gameOver()) {
-			
-			
-			
+	
+			moveBall();
+			checkForCollisions();
+			pause(DELAY);
 			
 		}
 	}
-
+	
 	
 	private void createBall() {
 		ball = new GOval(WIDTH / 2 - BALL_RADIUS, HEIGHT / 2 + BALL_RADIUS, BALL_RADIUS * 2, BALL_RADIUS * 2);
@@ -149,14 +159,79 @@ public class Breakout extends GraphicsProgram {
 		add(ball);
 	}
 	
-	private boolean gameOver() {
-		return (brick == null); 
+	private void moveBall() {
+		ball.move(vx, vy);
+		
 	}
 	
+	private void checkForCollisions() {
+		ballToWallCol();
+		ballToObjCol();
+	}
+	
+	private void ballToWallCol() {
+	//	if (ball.getY() >= HEIGHT - 2 * BALL_RADIUS) {
+	//		vy = -vy;
+	//	}
+		if (ball.getX() >= WIDTH - 2 * BALL_RADIUS) {
+			vx = -vx;
+		}
+		if (ball.getY() <= 0) {
+			vy = -vy;
+		}
+		if (ball.getX() <= 0) {
+			vx = -vx;
+		}
+	}
+	
+	private void ballToObjCol() {
+		
+		getColObj();
+		
+		if (colObj == paddle) {
+			vy = -vy;
+			colObj = null;
+			println("hit paddle");
+			
+		}
+		if (colObj != paddle && colObj != null) {
+			vy = -vy;
+			numOfBricks -= 1;
+			remove(colObj);
+			colObj = null;
+			println(numOfBricks);
+
+		}
+		
+	}
+	
+	private void getColObj() {
+		if (colObj == null) {
+			colObj = getElementAt(ball.getX(), ball.getY());
+			if (colObj == null) {
+				colObj = getElementAt(ball.getX() + 2 * BALL_RADIUS, ball.getY());
+				if (colObj == null) {
+					colObj = getElementAt(ball.getX(), ball.getY() + 2 * BALL_RADIUS);
+					if (colObj == null) {
+						colObj = getElementAt(ball.getX() + 2 * BALL_RADIUS, ball.getY() + 2 * BALL_RADIUS);
+					}
+				}
+			}
+		}
+	}
+	
+	private boolean gameOver() {
+		return (numOfBricks == 0 || ball.getY() >= HEIGHT - 2 * BALL_RADIUS); 
+	}
+	
+	
+	private int numOfBricks;
+	private GObject colObj;
 	private GRect paddle;
 	private GRect brick;
 	private GOval ball;
 	private int paddleY;
-
+	private double vx, vy;
+	RandomGenerator rgen = RandomGenerator.getInstance();
 	
 }

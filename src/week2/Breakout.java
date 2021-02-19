@@ -16,6 +16,8 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import java.io.*;
+
 import javax.swing.JPopupMenu.Separator;
 
 public class Breakout extends GraphicsProgram {
@@ -62,6 +64,9 @@ public class Breakout extends GraphicsProgram {
 
 	
 	private static final int DELAY = 5;
+	
+	
+
 	
 /* Method: run() */
 /** Runs the Breakout program. */
@@ -225,6 +230,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	
+	
 	private int numOfBricks;
 	private GObject colObj;
 	private GRect paddle;
@@ -233,5 +239,6 @@ public class Breakout extends GraphicsProgram {
 	private int paddleY;
 	private double vx, vy;
 	RandomGenerator rgen = RandomGenerator.getInstance();
+	
 	
 }

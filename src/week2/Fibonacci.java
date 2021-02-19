@@ -18,6 +18,8 @@ public class Fibonacci extends ConsoleProgram {
 			println(fib1);
 			fib0 += fib1; 
 		}
-		println(fib0);
+		if (fib0 < MAX_VALUE) {
+			println(fib0);
+		}
 	}
 }

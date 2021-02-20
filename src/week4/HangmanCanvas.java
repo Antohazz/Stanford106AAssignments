@@ -5,6 +5,8 @@ package week4;
  * This file keeps track of the Hangman display.
  */
 
+import java.awt.Color;
+
 import acm.graphics.*;
 
 
@@ -13,7 +15,8 @@ public class HangmanCanvas extends GCanvas {
 
 
 	private GLabel xword;
-	
+	private GLabel lettersGuessed;
+	private String letterrow = "";
 	
 /** Resets the display so that only the scaffold appears */
 	public void reset() {
@@ -31,28 +34,23 @@ public class HangmanCanvas extends GCanvas {
 		int w = getWidth();
 		int h = getHeight();
 		
-
-		
 		if (xword != null) {
 			remove(xword);
 		}
 		
-		xword = new GLabel(word, w/6 , h-h/6);
+		xword = new GLabel(word, w*0.2 , h-h*0.15);
 		xword.setFont("arial-bold-26");
 		add(xword);		
 		
 		
 	}
 
-		public void shoW (String word) {
+		public void testG (String word) {
 			int w = getWidth();
 			int h = getHeight();
 			
-			GRect body = new GRect (w/2, h/3, w/20, h/4);
-			body.setFilled(true);
-			add(body);
-			
-			GLabel answer = new GLabel(word, w/6 , h-h/8);
+
+			GLabel answer = new GLabel(word, w*0.2 , h-0.5);
 			add(answer);
 		
 		}
@@ -62,13 +60,69 @@ public class HangmanCanvas extends GCanvas {
  * on the scaffold and adds the letter to the list of incorrect
  * guesses that appears at the bottom of the window.
  */
-	public void noteIncorrectGuess(char letter) {
+	public void noteIncorrectGuess(char letter, int guessNum) {
 		/* You fill this in */
+		int w = getWidth();
+		int h = getHeight();
+		
+		if (letterrow.indexOf(letter) == -1) {
+		letterrow += letter;
+		if (lettersGuessed != null) {
+			remove(lettersGuessed);
+		}
+		lettersGuessed = new GLabel(letterrow, w*0.2 , h-h*0.1);
+		lettersGuessed.setFont("arial-bold-18");
+		add(lettersGuessed);
+		}
+		
+		switch (guessNum) {
+		case 7:
+			GRect pole = new GRect(w*0.2, h*0.1, w*0.03, h*0.6);
+			pole.setFilled(true);
+			add(pole);
+			break;
+		
+		case 6:
+			GRect beam = new GRect(w*0.2, h*0.1, w*0.4, h*0.015);
+			beam.setFilled(true);
+			add(beam);
+			break;
+		case 5: 
+			GLine rope = new GLine(w*0.5, h*0.1, w*0.5, h*0.27);
+			add(rope);
+			GOval head = new GOval(w*0.5 - w*0.05*0.5, h*0.25, w*0.05, w*0.05);
+			head.setFilled(true);
+			add(head);
+			break;
+		case 4:
+			GRect body = new GRect (w*0.5 - w*0.02*0.5, h*0.25, w*0.02, h*0.2);
+			body.setFilled(true);
+			add(body);
+			break;
+		case 3:
+			GLine leftArm = new GLine (w*0.5, h*0.25, w*0.45, h*0.4);
+			add(leftArm);
+			break;
+		case 2:
+			GLine rightArm = new GLine (w*0.5, h*0.25, w*0.55, h*0.4);
+			add(rightArm);
+			break;
+		case 1:
+			GLine leftLeg = new GLine (w*0.49, h*0.4, w*0.49, h*0.6);
+			add(leftLeg);
+			break;
+		case 0:
+		GLine rightLeg = new GLine (w*0.51, h*0.4, w*0.51, h*0.6);
+		add(rightLeg);
+		GOval pool = new GOval(w*0.5 - w*0.1*0.5, h*0.67, w*0.1, w*0.05);
+		add(pool);
+		}
+
 
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
-	private static final int SCAFFOLD_HEIGHT = 360;
+	private static final int SCAFFOLD_HEIGHT = 300;
 	private static final int BEAM_LENGTH = 144;
 	private static final int ROPE_LENGTH = 18;
 	private static final int HEAD_RADIUS = 36;

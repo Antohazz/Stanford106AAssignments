@@ -41,7 +41,7 @@ public class Hangman extends ConsoleProgram {
     
     private void gameSequence() {
     	setupGame();
-    	canvas.shoW(word); //test
+    	canvas.testG(word); //test
     	runGame();
     }
     
@@ -98,6 +98,7 @@ public class Hangman extends ConsoleProgram {
     			}
         	}else {
         		guessNum -= 1;
+        		canvas.noteIncorrectGuess(inpCharUp, guessNum);
             	println("There are no "+ inpCharUp +"'s in this word");
             	if (guessNum > 0) {
             		println("You have "+ guessNum +" attempts left");

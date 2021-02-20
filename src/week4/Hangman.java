@@ -14,31 +14,45 @@ import acm.util.*;
 
 import java.awt.*;
 
+
 public class Hangman extends ConsoleProgram {
 	
-    RandomGenerator rgen = RandomGenerator.getInstance(); 
-    HangmanLexicon Dict;
-    boolean gameOver;
-    int guessNum;
-    char inpChar;
-    String word;
-    String xword = "";
-    String inp;
+	private HangmanCanvas canvas;
+	private RandomGenerator rgen = RandomGenerator.getInstance(); 
+	private HangmanLexicon Dict;
+	private boolean gameOver;
+	private int guessNum;
+	private char inpChar;
+	private String word;
+	private String xword;
+	private String inp;
+    
+    public void init() {
+    	canvas = new HangmanCanvas();
+    	add(canvas);
+    	}
 
     public void run() {
-    	
+    	setFont("arial-bold-18");
     	setupDict();
-    	setupGame();
-    	println(word);
-    	runGame();
+    	gameSequence();
     	
 	}
+    
+    private void gameSequence() {
+    	setupGame();
+    	canvas.shoW(word); //test
+    	runGame();
+    }
     
     private void setupDict() {
     	Dict = new HangmanLexicon();
     }
     
     private void setupGame() {
+    	canvas.reset();
+    	gameOver = false;
+    	xword = "";
     	guessNum = 8;
     	int rNum = rgen.nextInt(0, Dict.getWordCount() - 1);
     	word = Dict.getWord(rNum);
@@ -52,7 +66,8 @@ public class Hangman extends ConsoleProgram {
     
     private void runGame() {
     	while (!gameOver) {
-    	println("Word: " + xword); // delete
+    	println("Word: " + xword);
+    	canvas.displayWord(xword);
     	userInput();
     	checkInput();
     	checkGameOver();
@@ -96,7 +111,8 @@ public class Hangman extends ConsoleProgram {
     			if (xword.indexOf('-') != -1 && guessNum == 0){
     				gameOver = true;
     				gameBadEnd();
-    			}else if (xword.indexOf('-') == -1) {
+    			} else if (xword.indexOf('-') == -1) {
+    				canvas.displayWord(word);
     				gameOver = true;
     				gameGoodEnd();
     		}
@@ -107,8 +123,8 @@ public class Hangman extends ConsoleProgram {
     private void gameBadEnd() {
     	println("");
     	println("You haven't guessed the word "+ word);
-    	println("I'm sorry, you have shared the fate of Selma Jezkova");
-
+    	println("I'm sorry, you have to share the fate of Selma Jezkova");
+    	playAgain();
     }
     
     
@@ -116,6 +132,19 @@ public class Hangman extends ConsoleProgram {
     	println("");
     	println("Yes, the word is " + xword);
     	println("You can live a little bit longer");
+    	playAgain();
     }    	
+    private void playAgain() {
+    	println("");
+    	println("");
+    	String yn = readLine("Press any key to play again? y/n ");
+    	if (yn.charAt(0) == 'y') {
+    		gameSequence();
+    	}else if (yn.charAt(0) == 'n') {
+    		println("Rest in peace");
+    	}else {
+    		playAgain();
+    	}
+    }
 
 }

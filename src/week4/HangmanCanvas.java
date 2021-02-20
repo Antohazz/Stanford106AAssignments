@@ -7,11 +7,18 @@ package week4;
 
 import acm.graphics.*;
 
+
+
 public class HangmanCanvas extends GCanvas {
 
+
+	private GLabel xword;
+	
+	
 /** Resets the display so that only the scaffold appears */
 	public void reset() {
 		/* You fill this in */
+		removeAll();
 	}
 
 /**
@@ -21,8 +28,34 @@ public class HangmanCanvas extends GCanvas {
  */
 	public void displayWord(String word) {
 		/* You fill this in */
+		int w = getWidth();
+		int h = getHeight();
+		
+
+		
+		if (xword != null) {
+			remove(xword);
+		}
+		
+		xword = new GLabel(word, w/6 , h-h/6);
+		xword.setFont("arial-bold-26");
+		add(xword);		
+		
+		
 	}
 
+		public void shoW (String word) {
+			int w = getWidth();
+			int h = getHeight();
+			
+			GRect body = new GRect (w/2, h/3, w/20, h/4);
+			body.setFilled(true);
+			add(body);
+			
+			GLabel answer = new GLabel(word, w/6 , h-h/8);
+			add(answer);
+		
+		}
 /**
  * Updates the display to correspond to an incorrect guess by the
  * user.  Calling this method causes the next body part to appear
@@ -31,6 +64,7 @@ public class HangmanCanvas extends GCanvas {
  */
 	public void noteIncorrectGuess(char letter) {
 		/* You fill this in */
+
 	}
 
 /* Constants for the simple version of the picture (in pixels) */

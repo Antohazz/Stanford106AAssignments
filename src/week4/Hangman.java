@@ -122,7 +122,7 @@ public class Hangman extends ConsoleProgram {
 
     
     private void gameBadEnd() {
-    	println("");
+    	print("\n");
     	println("You haven't guessed the word "+ word);
     	println("I'm sorry, you have to share the fate of Selma Jezkova");
     	playAgain();
@@ -130,20 +130,23 @@ public class Hangman extends ConsoleProgram {
     
     
     private void gameGoodEnd() {
-    	println("");
+    	print("\n");
     	println("Yes, the word is " + xword);
     	println("You can live a little bit longer");
     	playAgain();
     }    	
     private void playAgain() {
-    	println("");
-    	println("");
-    	String yn = readLine("Press any key to play again? y/n ");
-    	if (yn.charAt(0) == 'y') {
+    	print("\n\n");
+    	String yn = readLine("Play again? y/n ");
+    	if (yn.equals("")) {
+    		playAgain();
+    	}
+    	else if (yn.charAt(0) == 'y') {
     		gameSequence();
     	}else if (yn.charAt(0) == 'n') {
     		println("Rest in peace");
-    	}else {
+    	}
+    	else {
     		playAgain();
     	}
     }

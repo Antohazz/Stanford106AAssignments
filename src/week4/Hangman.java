@@ -141,9 +141,9 @@ public class Hangman extends ConsoleProgram {
     	if (yn.equals("")) {
     		playAgain();
     	}
-    	else if (yn.charAt(0) == 'y') {
+    	else if (yn.charAt(0) == 'y' || yn.charAt(0) == 'Y') {
     		gameSequence();
-    	}else if (yn.charAt(0) == 'n') {
+    	}else if (yn.charAt(0) == 'n' || yn.charAt(0) == 'N') {
     		println("Rest in peace");
     	}
     	else {

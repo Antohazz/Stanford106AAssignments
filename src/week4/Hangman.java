@@ -46,12 +46,13 @@ public class Hangman extends ConsoleProgram {
     	for (int i = 0; i < word.length(); i++) {
     		xword = xword + "-";
     	}
+    	
     	println("Welcome to Hangman");
     }
     
     private void runGame() {
     	while (!gameOver) {
-    	println("Word: " + xword);
+    	println("Word: " + xword); // delete
     	userInput();
     	checkInput();
     	checkGameOver();
@@ -83,8 +84,10 @@ public class Hangman extends ConsoleProgram {
         	}else {
         		guessNum -= 1;
             	println("There are no "+ inpCharUp +"'s in this word");
-            	println("You have "+ guessNum +" guesses left");
-        	}
+            	if (guessNum > 0) {
+            		println("You have "+ guessNum +" attempts left");
+            	}
+            }
     	}
        	
     }
@@ -102,12 +105,15 @@ public class Hangman extends ConsoleProgram {
 
     
     private void gameBadEnd() {
+    	println("");
     	println("You haven't guessed the word "+ word);
-    	println("You're DEAD!");
+    	println("I'm sorry, you have shared the fate of Selma Jezkova");
+
     }
     
     
     private void gameGoodEnd() {
+    	println("");
     	println("Yes, the word is " + xword);
     	println("You can live a little bit longer");
     }    	

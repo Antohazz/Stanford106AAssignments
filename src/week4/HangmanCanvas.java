@@ -34,6 +34,8 @@ public class HangmanCanvas extends GCanvas {
 		int w = getWidth();
 		int h = getHeight();
 		
+
+		
 		if (xword != null) {
 			remove(xword);
 		}
@@ -65,11 +67,14 @@ public class HangmanCanvas extends GCanvas {
 		int w = getWidth();
 		int h = getHeight();
 		
+		
 		if (letterrow.indexOf(letter) == -1) {
 		letterrow += letter;
+
 		if (lettersGuessed != null) {
 			remove(lettersGuessed);
 		}
+		
 		lettersGuessed = new GLabel(letterrow, w*0.2 , h-h*0.1);
 		lettersGuessed.setFont("arial-bold-18");
 		add(lettersGuessed);
@@ -116,6 +121,7 @@ public class HangmanCanvas extends GCanvas {
 		add(rightLeg);
 		GOval pool = new GOval(w*0.5 - w*0.1*0.5, h*0.67, w*0.1, w*0.05);
 		add(pool);
+		letterrow = "";
 		}
 
 

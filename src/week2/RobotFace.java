@@ -37,7 +37,7 @@ public class RobotFace extends GraphicsProgram {
 		int Y = midY - HEAD_HEIGHT / 2;
 		
 		GRect RHead = new GRect (X, Y, HEAD_WIDTH, HEAD_HEIGHT);
-		RHead.setColor(Color.gray);
+		RHead.setFillColor(Color.gray);
 		RHead.setFilled(true);
 		add(RHead);
 

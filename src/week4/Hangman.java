@@ -28,6 +28,8 @@ public class Hangman extends ConsoleProgram {
 	private String xword;
 	private String inp;
     
+//	public static void main(String[] args) {(new Hangman()).start(args);}
+	
     public void init() {
     	canvas = new HangmanCanvas();
     	add(canvas);

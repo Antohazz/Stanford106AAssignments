@@ -13,6 +13,7 @@ import acm.program.*;
 import acm.util.*;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 
 public class Hangman extends ConsoleProgram {
@@ -34,7 +35,12 @@ public class Hangman extends ConsoleProgram {
 
     public void run() {
     	setFont("arial-bold-18");
-    	setupDict();
+    	try {
+			setupDict();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	gameSequence();
     	
 	}
@@ -45,16 +51,18 @@ public class Hangman extends ConsoleProgram {
     	runGame();
     }
     
-    private void setupDict() {
+    private void setupDict() throws FileNotFoundException {
     	Dict = new HangmanLexicon();
+    	Dict.openFile();
     }
+   
     
     private void setupGame() {
     	canvas.reset();
     	gameOver = false;
     	xword = "";
     	guessNum = 8;
-    	int rNum = rgen.nextInt(0, Dict.getWordCount() - 1);
+    	int rNum = rgen.nextInt(0, (Dict.getWordCount() - 1));
     	word = Dict.getWord(rNum);
     	
     	for (int i = 0; i < word.length(); i++) {

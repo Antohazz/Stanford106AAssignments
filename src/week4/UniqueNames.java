@@ -19,12 +19,9 @@ private ArrayList names = new ArrayList();
 			}
 			
 			addsToArr(line);
-			
-											
+														
 		}
-		
-		
-		
+				
 	}//run
 	
 	private void addsToArr(String line) {

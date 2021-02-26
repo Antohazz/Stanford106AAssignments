@@ -15,6 +15,7 @@ public class CharExp extends ConsoleProgram {
 		
 	}
 	
+	
 	private char toLowCase (char ch) {
 		if (ch >= 'A' && ch <= 'Z') {
 			int y = ch - ('A'+'a');

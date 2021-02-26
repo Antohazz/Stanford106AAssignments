@@ -24,6 +24,7 @@ private ArrayList names = new ArrayList();
 		}
 		
 		
+		
 	}//run
 	
 	private void addsToArr(String line) {

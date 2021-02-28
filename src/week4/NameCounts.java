@@ -9,7 +9,7 @@ public class NameCounts extends ConsoleProgram {
 private HashMap<String, Integer> names = new HashMap<String, Integer>();
 
 	public void run() {
-
+		println(5.0 / 4 - 4 / 5 );
 		while (true) {
 			String line = readLine("Enter name: ");
 			if (line.length() == 0) {

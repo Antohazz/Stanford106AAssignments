@@ -9,12 +9,12 @@ public class KarelProblem1 extends SuperKarel{
 		turnLeft();
 		move();
 		turnRight();
-	if(	7 < 9 - 5 && 3 % 0 == 3) {
+	
 		runningKarel();
 		runningKarel();
 		runningKarel();
 		runningKarel();
-	}
+	
 	}//run
 		
 	private void runningKarel() {

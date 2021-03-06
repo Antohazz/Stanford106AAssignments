@@ -1,20 +1,38 @@
 package week5;
 
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
 import acm.program.*;
+import acm.graphics.*;
+// import java.util.ArrayList;
+import acm.gui.TableLayout;
 
-public class MyButtons extends ConsoleProgram {
+public class MyButtons extends GraphicsProgram {
 	
 	private JCheckBox checkbox;
 	private JRadioButton r1;
 	private JRadioButton r2;
 	private JRadioButton r3;
 	private JComboBox pick;
+	private JButton hi;
+	private TextField tf;
+	
 	
 	public void init() {
+	//	ArrayList<String> myArrayList = new ArrayList<String>();
+		
+		
+		//setLayout(new GridLayout(2,3));
+		//setLayout(new TableLayout(2,3));
+		//IntField if = new IntField(5);
+		//DoubleField if = new DoubleField(5);
+		tf = new TextField(10);
+		tf.addActionListener(this);
+		add(new JLabel("Input   "), NORTH);
+		add(tf, NORTH);
 		
 		pick = new JComboBox();
 		pick.addItem("one");
@@ -43,7 +61,9 @@ public class MyButtons extends ConsoleProgram {
 		checkbox.setSelected(false);
 		add(checkbox, SOUTH);
 				
-		add(new JButton("Hi"), SOUTH);
+		hi = new JButton("Hi");
+		add(hi, SOUTH);
+		//add(new JButton("Hi"), SOUTH);
 		
 		addActionListeners();
 		
@@ -51,12 +71,18 @@ public class MyButtons extends ConsoleProgram {
 	
 	
 	public void actionPerformed (ActionEvent e) {
+		
+		//e.getSource(); gives reference to button
+		// if (e.getSource() == hi){};
+		
 		//String command = e.getActionCommand();
 		if(e.getActionCommand().equals("Hi") && checkbox.isSelected() && r1.isSelected()) {
 			println("Button Hi pushed");
 
 		}
-		
+		if(e.getSource() == tf ) {
+			println("Hi " + tf.getText());
+		}
 
 	}
 	

@@ -28,6 +28,9 @@ public class FlightPlanner extends ConsoleProgram {
 		println("Let's plan your round trip!");
 		
 		startingCity = readLine("Enter starting city: ");
+		if (!roadMap.contains(startingCity)) {
+			startingCity = readLine("Enter starting city: ");
+		}
 		route.add(startingCity);
 		
 		showOptions(startingCity);
@@ -122,12 +125,15 @@ public class FlightPlanner extends ConsoleProgram {
 		
 	}
 
-	private void showOptions(String c) {
-		
+	private void showOptions(String k) {
+		String c = k;
+		try {
 		 for (int i = 0; i < cityMap.get(c).getConnectedCities().size(); i++){
              println(cityMap.get(c).getConnectedCities().get(i));
 		 }
-		 
+		}catch (Exception e){
+			
+		}
 	}
 
 	private void pickDest() {

@@ -24,13 +24,14 @@ public class FlightPlanner extends ConsoleProgram {
 		loadDatabase(file);
 		createCitiesMap();
 		showCityDatabase();
-		route.clear();
+		
 		println("Let's plan your round trip!");
 		
 		startingCity = readLine("Enter starting city: ");
-		if (!roadMap.contains(startingCity)) {
+		if (!cityMap.containsKey(startingCity)) {
 			startingCity = readLine("Enter starting city: ");
 		}
+		route.clear();
 		route.add(startingCity);
 		
 		showOptions(startingCity);
@@ -143,10 +144,11 @@ public class FlightPlanner extends ConsoleProgram {
 	
 	private void printRoute() {
 		println("your route: ");
-		for (int i = 0; i < route.size(); i++){
-			println(route.get(i));
-
-	}
+		for (int i = 0; i < route.size()-1; i++){
+			print(route.get(i));
+			print(" --> ");
+	}	
+		print(route.get(0));
         	 }
 	
 }//class
